@@ -35,7 +35,7 @@ From these, we will focus on:
 ## Roles
 
 - **Sean:** Disk forensics, recovery testing, and final report conclusions  
-- **[Partner Name]:** Network forensics, dataset collection, and slide design  
+- **Josh:** Network forensics, dataset collection, and slide design  
 
 Both team members will collaborate on timeline analysis, documentation, and presentation prep.
 
