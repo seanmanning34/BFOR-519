@@ -63,7 +63,7 @@ Below is the project workflow:
    - Download Digital Corpora disk image  
    - Verify integrity & store raw data safely  
 
-2. **Network Forensics (Partner)**  
+2. **Network Forensics (Josh)**  
    - Load PCAP in Wireshark  
    - Identify suspicious DNS, domains, IPs  
    - Extract IOCs for correlation  
