@@ -1,2 +1,24 @@
-touch analysis/network/initial-findings.md
-open analysis/network/initial-findings.md
+# Network Analysis Findings (PCAP)
+
+## Dataset
+Source: Malware-Traffic-Analysis.net  
+Family: Shade / Troldesh ransomware  
+Date: October 15, 2019  
+
+## Summary
+The PCAP contains suspicious DNS traffic, HTTP GET requests, and potential command-and-control activity associated with ransomware delivery.
+
+## Indicators Identified (IOCs)
+- Suspicious domains:
+  - examplemaliciousdomain.ru
+  - shadyupdates.net
+- Suspicious IPs:
+  - 185.99.xxx.xxx
+- Suspicious behavior:
+  - Repeated DNS lookups to foreign domains
+  - HTTP traffic downloading executable payloads
+
+## Screenshots (to be added)
+1. Screenshot of DNS queries
+2. Suspicious HTTP traffic
+3. Any flagged packets or patterns
