@@ -1,0 +1,19 @@
+# Final Findings (Draft)
+
+## Executive Summary
+(Will fill in after analysis)
+
+## Network Findings
+(Include Wireshark screenshots and IOC list)
+
+## Disk Findings
+(Include Autopsy screenshots and artifact descriptions)
+
+## Timeline Analysis
+(Correlated event findings)
+
+## Recovery Evaluation
+(File carving, shadow copies, lessons learned)
+
+## Conclusion
+(Final thoughts & incident response playbook)
