@@ -6,7 +6,7 @@ Course project focused on simulating the forensic investigation and incident res
 ## Project Overview
 
 - **Title:** Ransomware Response & Recovery: Forensic Investigation and Incident Response Simulation  
-- **Team Members:** Sean Manning and [Partner Name]  
+- **Team Members:** Sean Manning and Josh Okanlawon  
 - **Due Date:** December 10
 
 ## Setup
