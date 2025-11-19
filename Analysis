@@ -1,0 +1,28 @@
+# Plaso / Log2Timeline Event Correlation
+
+## Goal:
+Create a unified event timeline combining:
+- Network events (PCAP)
+- Disk events (MFT, logs, registry)
+- User activity
+
+## Steps:
+1. Extract events using Plaso:
+
+2. Export events to CSV:
+
+3. Filter for relevant timestamps:
+- File creation
+- Program execution
+- Logon/logoff events
+- Modified registry keys
+
+## Timeline Phases:
+- Pre-attack activity
+- Initial compromise
+- Artifact correlations
+- Recovery artifacts
+
+## To Add:
+- Timeline CSV snippets
+- Screenshots of event clustering
