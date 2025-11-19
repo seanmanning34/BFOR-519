@@ -1,47 +1,149 @@
 # BFOR-519
-# Ransomware Response & Recovery
+Ransomware Response & Recovery  
+A Forensic Investigation and Incident Response Simulation
 
-Course project focused on simulating the forensic investigation and incident response (analysis and recovery phases) of a ransomware incident using publicly available datasets.
+## 1. Project Overview  
+Ransomware remains one of the most disruptive cybersecurity threats, often causing data loss, downtime, and costly recovery efforts. This project simulates the **analysis and recovery phases** of a ransomware incident response using publicly available forensic datasets. We examine both the network and disk components of a ransomware event to understand how investigators can identify indicators of compromise (IOCs), reconstruct attack timelines, and evaluate data recovery strategies—without using or executing live malware.
 
-## Project Overview
+Our project focuses on correlating network-level malicious activity with host-level forensic artifacts to build a unified and realistic incident response workflow.
 
-- **Title:** Ransomware Response & Recovery: Forensic Investigation and Incident Response Simulation  
-- **Team Members:** Sean Manning and Josh Okanlawon  
-- **Due Date:** December 10
+---
 
-## Setup
+## 2. Project Relevance  
+This project is directly related to digital forensics and incident response (DFIR). Ransomware attacks continue to grow in frequency and sophistication, making it essential for analysts to understand how to:
 
-We will use isolated virtual machines (no internet access) and publicly available datasets rather than executing live malware. Tools we plan to use include:
+- detect malicious activity through logs and PCAPs  
+- examine host artifacts to identify persistence mechanisms  
+- build event timelines  
+- determine what data can be recovered  
 
-- **Wireshark** – network traffic inspection (PCAP analysis)
-- **Autopsy** – disk-level forensic analysis
-- **Plaso/log2timeline** – event timeline reconstruction
+By completing this project, we develop practical skills in DFIR analysis, including network forensics (Wireshark), disk forensics (Autopsy), and timeline analysis (Plaso). These skills are used daily by SOC analysts, IR teams, forensic examiners, and cybersecurity professionals.
 
-Our main focus is on **Windows systems**, as most ransomware targets this platform.
+---
 
-## Data
+## 3. Methodology  
 
-We will analyze:
+### **3.1 Setup & Environment**
+All analysis is performed in a **safe, isolated environment**:
+- macOS host system  
+- VirtualBox VM (offline, no internet access)  
+- Dataset copies stored safely (raw data remains read-only)  
+- No execution of live malware  
 
-- A Shade (Troldesh) ransomware infection PCAP from Malware-Traffic-Analysis.net  
-- A benign Windows disk image from Digital Corpora  
+### **3.2 Tools Used**
+| Tool | Purpose |
+|------|---------|
+| **Wireshark** | Analyzing ransomware infection PCAPs, identifying IOCs, DNS queries, and suspicious traffic |
+| **Autopsy** | Disk image analysis (file metadata, persistence, user activity) |
+| **Plaso/log2timeline** | Creating a unified event timeline from disk artifacts |
+| **VirtualBox** | Running an isolated VM environment if needed |
+| **Draw.io** | Workflow and architecture diagrams |
 
-From these, we will focus on:
+### **3.3 Datasets**
+We use **public, safe datasets** widely used for DFIR education:
 
-- Network indicators of compromise (domains, IPs, suspicious connections)
-- File metadata and persistence artifacts
-- Timeline correlations between network activity and host behavior
+**1. Ransomware Infection PCAP**  
+Source: Malware-Traffic-Analysis.net  
+Link: https://www.malware-traffic-analysis.net/2019/10/15/index.html  
+Dataset: Shade (Troldesh) ransomware infection network capture  
+Used for: detecting malicious domains, C2 connections, HTTP requests, and initial infection behavior  
 
-## Roles
+**2. Windows Disk Image**  
+Source: Digital Corpora  
+Link: https://digitalcorpora.org/corpora/disk-images/  
+Dataset: benign Windows disk image  
+Used for: modeling disk forensics, examining metadata, persistence, and simulating recovery attempts  
 
-- **Sean:** Disk forensics, recovery testing, and final report conclusions  
-- **Josh:** Network forensics, dataset collection, and slide design  
+### **3.4 Workflow**
 
-Both team members will collaborate on timeline analysis, documentation, and presentation prep.
+Below is the project workflow:
 
-## Expected Outcomes
+1. **Collect Datasets**  
+   - Download ransomware PCAP  
+   - Download Digital Corpora disk image  
+   - Verify integrity & store raw data safely  
 
-We aim to produce:
+2. **Network Forensics (Partner)**  
+   - Load PCAP in Wireshark  
+   - Identify suspicious DNS, domains, IPs  
+   - Extract IOCs for correlation  
 
-- A clear workflow for using network and disk forensics in the **analysis and recovery phases** of ransomware incident response.
-- A short “playbook” of best practices for detecting ransomware activity, reconstructing an incident timeline, and evaluating data recovery options—without handling live malware.
+3. **Disk Forensics (Sean)**  
+   - Load disk image in Autopsy  
+   - Analyze file metadata & persistence mechanisms  
+   - Identify changes resembling ransomware behavior  
+
+4. **Timeline Correlation (Both)**  
+   - Use Plaso/log2timeline  
+   - Combine network + disk events  
+   - Build incident timeline  
+
+5. **Recovery Testing (Sean)**  
+   - Simulate file carving  
+   - Examine backup-related artifacts  
+   - Assess what recovery methods succeed or fail  
+
+6. **Documentation & Presentation (Both)**  
+   - Build slides  
+   - Write final report  
+   - Prepare 10-minute presentation  
+
+**Workflow Diagram Example:**  
+_(add this using draw.io later)_
+
+---
+
+## 4. Results (To Be Added as Project Progresses)
+
+As we complete the project, we will add:
+
+### **4.1 Network Findings**
+- Screenshots of Wireshark PCAP analysis  
+- Suspicious domains, IPs, and requests  
+- Indicators of compromise (IOCs) summary  
+
+### **4.2 Disk Findings**
+- Autopsy screenshots  
+- File metadata tables  
+- Persistence artifacts  
+- Suspected ransomware behavior reconstruction  
+
+### **4.3 Timeline Findings**
+- Plaso-generated CSV timeline  
+- Correlation of disk + network events  
+
+### **4.4 Recovery Testing**
+- File carving results  
+- Recovery success/failure table  
+- Lessons learned on what can and cannot be restored  
+
+---
+
+## 5. Conclusion  
+This project demonstrates how DFIR analysts can safely reconstruct ransomware events using publicly available datasets. Through network, disk, and timeline analysis, we will show how incident responders identify malicious activity, correlate evidence across systems, and test recovery options. The final output will be a practical playbook for analyzing and responding to ransomware events—without ever using live malware.
+
+---
+
+## 6. Team Members & Responsibilities  
+| Member | Responsibilities |
+|--------|------------------|
+| **Sean Manning** | Disk forensics (Autopsy), recovery testing, final report conclusions |
+| **Josh Okanlawon** | Network forensics (Wireshark), dataset collection, slide design |
+| **Both** | Workflow design, Plaso timeline analysis, documentation, presentation |
+
+---
+
+## 7. Repository Structure
+
+
+`.gitignore` will exclude raw dataset files to prevent large uploads.
+
+---
+
+## 8. References  
+- Malware Traffic Analysis – Shade/Troldesh Ransomware PCAP  
+- Digital Corpora – Disk Images  
+- Plaso Documentation  
+- Autopsy/Sleuth Kit Documentation  
+- Wireshark User Guide  
+
