@@ -1,1 +1,2 @@
 unzip -P infected 2019-10-15-infection-traffic.pcap.zip
+ditto -x -k --password infected 2019-10-15-infection-traffic.pcap.zip .
