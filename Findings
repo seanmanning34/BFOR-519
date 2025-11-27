@@ -1,19 +1,95 @@
-# Final Findings (Draft)
+# Final Findings
 
-## Executive Summary
-(Will fill in after analysis)
+## Overview
+This project simulates the investigation and response process for a ransomware-style incident using:
+- A synthetic PCAP modeling ransomware command-and-control (C2) beaconing  
+- A benign Windows NTFS disk image  
+- Host activity artifacts (documents, registry, recent activity)  
+- A modeled incident timeline  
 
-## Network Findings
-(Include Wireshark screenshots and IOC list)
+This allowed us to practice incident response methodology without handling live malware.
 
-## Disk Findings
-(Include Autopsy screenshots and artifact descriptions)
+---
 
-## Timeline Analysis
-(Correlated event findings)
+## 1. Network Forensics Findings
+The synthetic PCAP (`synthetic_ransom_beaconing.pcap`) revealed three suspicious outbound UDP packets from the internal host `192.168.1.10`:
 
-## Recovery Evaluation
-(File carving, shadow copies, lessons learned)
+| Time | Source        | Destination      | Port | Payload              |
+|------|---------------|------------------|------|----------------------|
+| 1s   | 192.168.1.10  | 185.199.110.1    | 80   | `RANSOM_NOTE_CHECK`  |
+| 2s   | 192.168.1.10  | 46.4.233.1       | 443  | `RANSOM_STATUS`      |
+| 3s   | 192.168.1.10  | 203.0.113.50     | 443  | `RANSOM_PING`        |
+
+### Indicators of Compromise (IOCs)
+- External IPs contacted on web ports using **UDP, not TCP**
+- High-numbered source ports (4444, 5555)
+- Payloads referencing ransomware behavior
+
+This traffic resembles periodic C2 beaconing used by ransomware to:
+- Check for ransom note delivery  
+- Report encryption progress  
+- Ping the attacker’s server  
+
+---
+
+## 2. Disk Forensics Findings
+Using Autopsy, we analyzed a Windows NTFS disk image modeled after the Digital Corpora M57 dataset.
+
+### Key observations:
+- **User documents** present: typical encryption targets (Excel, Word, PDFs)
+- **Suspicious persistence entries** in registry Run keys:
+  - `encryptor.exe`
+  - `lockerClient.exe`
+  - `decryptor_service.exe`
+- **Recent Activity** showed:
+  - Documents recently opened
+  - Several system files accessed
+  - Executable activity consistent with a potential compromise
+
+This demonstrates typical host artifacts responders would analyze during ransomware investigations.
+
+---
+
+## 3. Timeline Correlation
+By combining:
+- PCAP timestamps  
+- Autopsy Recent Activity  
+- Persistence entries  
+
+…we modeled how an incident responder links:
+
+- **Initial suspicious network traffic**  
+→ with  
+- **Changes to persistence mechanisms**  
+→ and  
+- **Recent file activity**  
+
+Even using synthetic/benign datasets, this correlation reflects real DFIR methodology.
+
+---
+
+## 4. Recovery & Recommendations
+
+### Recovery Strategy
+1. Identify targeted file locations (`C:\Users\JohnDoe\Documents`)
+2. Determine whether shadow copies or backups exist  
+3. Remove persistence entries  
+4. Restore clean system state or reimage workstation  
+5. Restore user data from backups or carve deleted versions
+
+### Recommendations
+- Implement egress filtering to block unexpected outbound UDP on ports 80/443
+- Enable endpoint logging (Sysmon, Windows Event Logging)
+- Maintain offline backups resistant to ransomware
+- Monitor registry Run keys for new persistence entries
+- Use SIEM rules to detect beaconing patterns
+
+---
 
 ## Conclusion
-(Final thoughts & incident response playbook)
+This project demonstrates—
+- How to build a forensic workflow from network → disk → timeline  
+- How to identify suspicious ransomware-style behavior  
+- How to model recovery strategy without executing live malware  
+
+The synthetic dataset approach kept the environment safe while still allowing realistic DFIR practice.
