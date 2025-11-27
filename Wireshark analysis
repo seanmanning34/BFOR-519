@@ -1,0 +1,64 @@
+Packet List
+No.
+Time
+Time
+Source
+Destination
+Length
+
+1
+3. 00000
+192. 168.1.10
+aa. bbccddie e.ff
+IPV4
+33 D
+3
+
+2
+4. 00030
+192.168.11.0
+11.22.33:44:55 6
+RANSOM_STATUS 
+32 D
+3
+
+3
+4. 00030
+203.0. 113.50
+203.0.113.500
+RANSOM_PING
+32 D
+3
+
+Packet Details
+
+v Ethernet II, src: ( a.:bb. cc:dd: ee: ff: (Ivh)
+
+Destination MAC: 11:22:33:44:
+
+Type: IPV4 (0x0800)
+
+v Internet Prolocol Verion 4: 192.168.1.10
+
+Scoure IP Addh'ess: 4444 (Destination: 185.199.100./1 my92)
+
+Source Port: 4444 (22)
+
+Destination Port: 80 (0
+
+v User Datagram Protocol
+
+Source Port: 4444 (22 ct46) Destination Port: 80
+
+Length: 25 (Oaf30
+
+v Data: 17 bytes
+
+17 (ASCII|) : RANSOM_NOTE_CHECK
+
+
+Payloud View
+• Payket Bytes
+17 22 41 4e 55 4D 5 59 56 63
+RANSOM_NOTE
+CHECK
