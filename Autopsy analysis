@@ -1,8 +1,76 @@
-File system tree
+# Disk Analysis Findings (Autopsy)
 
-User documents folder
+## Dataset
+Windows NTFS disk image modeled after the Digital Corpora M57-Patents scenario.  
+This image does not contain real ransomware but is used to simulate a workstation involved in an incident.
 
-Registry run keys
+## Objective
+To analyze host-level artifacts that would be relevant during a ransomware investigation, including:
+- File system structure
+- User data locations
+- Potential persistence mechanisms
+- Recent user activity
 
-Recent activity logs
+## 1. File System Layout
+Autopsy shows a standard Windows 10 NTFS layout, including:
 
+- `C:\Program Files`
+- `C:\Users\JohnDoe`
+- `C:\Windows`
+- `C:\System Volume Information`
+
+These directories are typical investigation points when examining ransomware behavior because attackers often drop executables into user-writable folders or leverage system directories for persistence.
+
+**Screenshot:**  
+`analysis/disk/screenshots/fs_tree.png`
+
+## 2. User Documents (Potential Encryption Targets)
+The `C:\Users\JohnDoe\Documents` folder contains realistic user files:
+
+- Budget.xlsx  
+- Confidential.docx  
+- Project Plan.doc  
+- Personal Photos / PDFs  
+
+These are the types of files that ransomware typically attempts to encrypt, making this folder critical for incident response.
+
+**Screenshot:**  
+`analysis/disk/screenshots/user_documents.png`
+
+## 3. Persistence Analysis (Registry Run Keys)
+The Registry’s Run keys were inspected under:
+
+- `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
+- `HKLM\Software\Microsoft\Windows\CurrentVersion\Run`
+
+Suspicious persistence entries were modeled, such as:
+
+- `encryptor.exe`
+- `lockerClient.exe`
+- `decryptor_service.exe`
+
+These entries simulate how ransomware may ensure execution upon reboot.
+
+**Screenshot:**  
+`analysis/disk/screenshots/persistence_registry.png`
+
+## 4. Recent Activity
+Autopsy’s “Recent Activity” module shows recently accessed files and executed programs.  
+This helps determine:
+
+- What the user was doing shortly before the suspected compromise
+- Whether any unusual files were opened
+- Whether suspicious executables had recently run
+
+Activity included document editing, system utilities, and potential malware-related executables.
+
+**Screenshot:**  
+`analysis/disk/screenshots/recent_activity.png`
+
+## Summary
+The disk analysis portion demonstrates:
+- Where user data resides (encryption targets)
+- Where ransomware may install persistence mechanisms
+- How recent activity can assist in reconstructing a timeline
+
+This phase complements the network analysis by showing how host-level evidence connects with suspicious outbound traffic identified in the PCAP.
