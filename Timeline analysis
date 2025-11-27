@@ -1,0 +1,37 @@
+# Timeline Analysis
+
+## Objective
+To model how a forensic responder would correlate host activity with suspicious network traffic, even when using a synthetic or benign dataset.
+
+## Approach
+Because the disk image used does not contain live ransomware, we built a conceptual timeline based on:
+
+- Autopsy "Recent Activity" artifacts  
+- Timestamps from the synthetic PCAP  
+- Standard Windows event patterns (file opens, program executions)
+
+## Correlated Events
+
+### 1. Network Beacons (From PCAP)
+- **T=1s** — Outbound UDP beacon to 185.199.110.1 (`RANSOM_NOTE_CHECK`)
+- **T=2s** — Outbound UDP beacon to 46.4.233.1 (`RANSOM_STATUS`)
+- **T=3s** — Outbound UDP beacon to 203.0.113.50 (`RANSOM_PING`)
+
+### 2. Host Activity (From Autopsy)
+- Recent documents accessed: Budget.xlsx, Confidential.docx
+- Recent programs executed: Word, Excel, Notepad
+- Suspicious entries observed in registry persistence locations:
+  - `encryptor.exe`
+  - `lockerClient.exe`
+  - `decryptor_service.exe`
+
+## Analysis
+A malware investigator would link:
+- Outbound suspicious network connections  
+- With persistence entries appearing around the same timeframe  
+- And recent document access (possible encryption targets)  
+
+Even without live ransomware in the disk image, this methodology shows how incident responders combine network + disk + timeline evidence to reconstruct an attack.
+
+## Screenshots
+(Optional — you may include the Plaso image OR skip screenshots entirely here)
