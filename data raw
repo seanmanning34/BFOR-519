@@ -1,2 +1,43 @@
-unzip -P infected 2019-10-15-infection-traffic.pcap.zip
-ditto -x -k --password infected 2019-10-15-infection-traffic.pcap.zip .
+# make_ransom_beacon_pcap.py
+from scapy.all import Ether, IP, UDP, Raw, wrpcap
+
+def main():
+    src_ip = "192.168.1.10"  # simulated infected host
+    dst_ip_1 = "185.199.110.1"
+    dst_ip_2 = "46.4.233.1"
+    dst_ip_3 = "203.0.113.50"  # test/documentation range
+
+    src_mac = "aa:bb:cc:dd:ee:ff"
+    dst_mac = "11:22:33:44:55:66"
+
+    packets = []
+
+    # Beacon 1 – ransom note check
+    packets.append(
+        Ether(src=src_mac, dst=dst_mac) /
+        IP(src=src_ip, dst=dst_ip_1) /
+        UDP(sport=4444, dport=80) /
+        Raw(load=b"RANSOM_NOTE_CHECK")
+    )
+
+    # Beacon 2 – status check
+    packets.append(
+        Ether(src=src_mac, dst=dst_mac) /
+        IP(src=src_ip, dst=dst_ip_2) /
+        UDP(sport=5555, dport=443) /
+        Raw(load=b"RANSOM_STATUS")
+    )
+
+    # Beacon 3 – periodic ping
+    packets.append(
+        Ether(src=src_mac, dst=dst_mac) /
+        IP(src=src_ip, dst=dst_ip_3) /
+        UDP(sport=4444, dport=443) /
+        Raw(load=b"RANSOM_PING")
+    )
+
+    wrpcap("synthetic_ransom_beaconing.pcap", packets)
+    print("[+] PCAP written to synthetic_ransom_beaconing.pcap")
+
+if __name__ == "__main__":
+    main()
