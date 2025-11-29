@@ -100,3 +100,4 @@ The final output serves as a practical playbook for identifying, analyzing, and 
 - Plaso / log2timeline Documentation  
 - Autopsy User Documentation  
 - Scapy Official Library  
+- Wireshark
