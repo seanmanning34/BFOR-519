@@ -38,6 +38,3 @@ def main():
 
     wrpcap("synthetic_ransom_beaconing.pcap", packets)
     print("[+] PCAP written to synthetic_ransom_beaconing.pcap")
-
-if __name__ == "__main__":
-    main()
