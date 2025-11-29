@@ -1,7 +1,7 @@
 # Final Findings
 
 ## Overview
-This project simulates the investigation and response process for a ransomware-style incident using:
+This project simulates the investigation and response process for a ransomware style incident using:
 - A synthetic PCAP modeling ransomware command-and-control (C2) beaconing  
 - A benign Windows NTFS disk image  
 - Host activity artifacts (documents, registry, recent activity)  
