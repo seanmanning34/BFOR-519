@@ -6,13 +6,13 @@
 ---
 
 ## 1. Project Overview  
-This project simulates the analysis and response phases of a ransomware-style incident using **safe, synthetic forensic datasets**. Instead of executing live malware, we recreated realistic ransomware behaviors through:
+This project simulates the analysis and response phases of a ransomware style incident using **safe, synthetic forensic datasets**. Instead of executing live malware, we recreated realistic ransomware behaviors through:
 
 - A **custom synthetic PCAP** containing simulated ransomware beacon traffic  
 - A Windows NTFS disk image analyzed with Autopsy  
 - A timeline correlation modeled after Plaso/log2timeline methodology  
 
-The goal is to demonstrate how DFIR analysts identify malicious activity, examine host artifacts, correlate events, and outline recovery recommendations—all without handling real malware.
+The goal is to demonstrate how DFIR analysts identify malicious activity, examine host artifacts, correlate events, and outline recovery recommendations, all without handling real malware.
 
 ---
 
@@ -20,7 +20,7 @@ The goal is to demonstrate how DFIR analysts identify malicious activity, examin
 - Detect indicators of compromise (IOCs) in network traffic  
 - Identify persistence mechanisms and user activity from a disk image  
 - Correlate host and network events into a unified timeline  
-- Document a safe, repeatable workflow for ransomware-style investigations  
+- Document a safe, repeatable workflow for ransomware style investigations  
 
 ---
 
@@ -77,12 +77,12 @@ The goal is to demonstrate how DFIR analysts identify malicious activity, examin
 ## 5. Expected Outcomes  
 This project produces a structured DFIR workflow that demonstrates:
 
-- How ransomware-style network traffic can be detected  
+- How ransomware style network traffic can be detected  
 - How disk artifacts reveal persistence and suspicious activity  
 - How investigators correlate events to reconstruct an incident timeline  
 - How forensic tools support ransomware investigations without live malware  
 
-The final output serves as a practical playbook for identifying, analyzing, and responding to ransomware-like activity.
+The final output serves as a practical playbook for identifying, analyzing, and responding to ransomware like activity.
 
 ---
 
