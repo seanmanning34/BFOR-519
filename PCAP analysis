@@ -32,8 +32,3 @@ In a real environment, this pattern would be considered suspicious because an in
 - Flag `192.168.1.10` as a potentially compromised machine.
 - Add the external IPs to a watchlist or blocklist pending further investigation.
 - Correlate these IOCs with host-based artifacts (process execution, file changes, registry entries) during incident response.
-
-## Screenshots (to be added)
-1. Wireshark packet list showing all three beacon packets.
-2. Packet details view (Ethernet → IP → UDP) for one beacon.
-3. Payload/hex view showing one of the `RANSOM_*` strings.
