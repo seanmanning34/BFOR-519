@@ -66,28 +66,5 @@ These network findings then correlate with disk artifacts and recent activity un
 
 ---
 
-## 4. Screenshots
-
-### **Packet List**
-Shows all three suspicious UDP beacons.
-
-![Packet List](screenshots/packet_list.png)
-
----
-
-### **Packet Details**
-Shows Ethernet, IP, UDP layers, and relevant metadata.
-
-![Packet Details](screenshots/packet_details.png)
-
----
-
-### **Payload View**
-Shows ASCII payload revealing ransomware beacon strings.
-
-![Payload](screenshots/payload_view.png)
-
----
-
 ## 5. Conclusion
 This synthetic PCAP provides a safe but realistic example of ransomware-style C2 communication. The network artifacts establish the foundation for correlating host behavior, registry persistence, and timeline reconstruction in the larger forensic investigation.
