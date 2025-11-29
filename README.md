@@ -73,12 +73,8 @@ The goal is to demonstrate how DFIR analysts identify malicious activity, examin
 
 ---
 
-## 5. Repository Structure  
 
-
----
-
-## 6. Expected Outcomes  
+## 5. Expected Outcomes  
 This project produces a structured DFIR workflow that demonstrates:
 
 - How ransomware-style network traffic can be detected  
@@ -90,7 +86,7 @@ The final output serves as a practical playbook for identifying, analyzing, and 
 
 ---
 
-## 7. Team Responsibilities  
+## 6. Team Responsibilities  
 
 | Member | Responsibilities |
 |--------|------------------|
@@ -100,7 +96,7 @@ The final output serves as a practical playbook for identifying, analyzing, and 
 
 ---
 
-## 8. References  
+## 7. References  
 - Plaso / log2timeline Documentation  
 - Autopsy User Documentation  
 - Scapy Official Library  
