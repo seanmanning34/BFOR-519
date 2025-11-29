@@ -101,4 +101,4 @@ The final output serves as a practical playbook for identifying, analyzing, and 
 - Autopsy User Documentation  
 - Scapy Official Library  
 - Wireshark
-- Digital Corpora disk images
+- Digital Corpora Disk Images
