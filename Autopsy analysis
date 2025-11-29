@@ -21,8 +21,6 @@ Autopsy shows a standard Windows 10 NTFS layout, including:
 
 These directories are typical investigation points when examining ransomware behavior because attackers often drop executables into user-writable folders or leverage system directories for persistence.
 
-**Screenshot:**  
-`analysis/disk/screenshots/fs_tree.png`
 
 ## 2. User Documents (Potential Encryption Targets)
 The `C:\Users\JohnDoe\Documents` folder contains realistic user files:
@@ -34,8 +32,6 @@ The `C:\Users\JohnDoe\Documents` folder contains realistic user files:
 
 These are the types of files that ransomware typically attempts to encrypt, making this folder critical for incident response.
 
-**Screenshot:**  
-`analysis/disk/screenshots/user_documents.png`
 
 ## 3. Persistence Analysis (Registry Run Keys)
 The Registry’s Run keys were inspected under:
@@ -51,8 +47,6 @@ Suspicious persistence entries were modeled, such as:
 
 These entries simulate how ransomware may ensure execution upon reboot.
 
-**Screenshot:**  
-`analysis/disk/screenshots/persistence_registry.png`
 
 ## 4. Recent Activity
 Autopsy’s “Recent Activity” module shows recently accessed files and executed programs.  
@@ -64,8 +58,6 @@ This helps determine:
 
 Activity included document editing, system utilities, and potential malware-related executables.
 
-**Screenshot:**  
-`analysis/disk/screenshots/recent_activity.png`
 
 ## Summary
 The disk analysis portion demonstrates:
